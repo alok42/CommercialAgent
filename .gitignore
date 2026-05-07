@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+.env
+
+# Editor / OS files
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# UV project files
+uv.lock
