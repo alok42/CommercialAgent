@@ -35,6 +35,7 @@ def run_agent(question:str):
     tools=[get_product_price, apply_discount]
     tools_dict={tool.name: tool for tool in tools}
 
+    #llm=init_chat_model(f"openai:gpt-5.2",temperature=0.7)
     llm = init_chat_model(f"ollama:{Model}",temperature=0.7)
     llm_with_tools=llm.bind_tools(tools)
 
@@ -54,6 +55,8 @@ def run_agent(question:str):
             "Always use the apply_discount tool.\n"
             "4. If the user does not specify the discount tier, ask them which tier to use - do NOT assume one"
             "5. DO NOT assume currency unless specified by the user. \n" 
+            "6. Always use the tools when needed - do NOT provide final answers without using the tools. \n"
+            "7. Aways get the price and product info from tools"
             ),
         HumanMessage(content=question),
     ]
